@@ -54,14 +54,6 @@ const SectionTwo = () => (
                     <p>Adventure</p>
                 </Fade>
             </div>
-            <div className="empty">
-                <Parallax
-                    y={[-200, -50]}
-                    x={[0, -120]}
-                >
-                    <img src="https://i.ibb.co/QJNLg0V/kisspng-tent-cartoon-camping-clip-art-set-up-a-tent-to-make-a-fire-5a9820e98b8500-972009741519919337.png"></img>
-                </Parallax>
-            </div>
         </div>
     </ParallaxProvider>
 );

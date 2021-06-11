@@ -63,7 +63,13 @@ a {
     padding: 50px; 
     position: relative;
 
+    .actionOff {
+        opacity: 0;
+        visibility: hidden;
+    }
+
     .action {
+        transition: .3s;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -135,6 +141,16 @@ a {
     height: 100vh;
 }
 
+.section-three {
+    height: 300px;
+    padding: 0 300px;
+    p {
+        color: #DfDfDf;
+        font-size: 14px;
+        line-height: 2;
+    }
+} 
+
 .title {
     color: #FFF;
     font-size: 70px;
@@ -153,18 +169,62 @@ a {
     }
 }
 
-.img {
+.car {
     width: 100%;
     display: flex;
     justify-content: center;
     position: fixed;
+    left: 0;
+    top: 240px;
+    z-index: 10;
+    transition: 1.5s;
 
     img {
-        width: 300px;
-        height: 200px;
+        width: 400px;
+        height: 300px;
         pointer-events: none;
         user-select: none;
     }
+}
+
+.carTransform {
+    transform: translateX(-200px);
+}
+
+.carTransform2 {
+    transform: translate(-200px, -250px) scale(.8);  
+}
+
+.camp {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    left: 400px;
+    top: 240px;
+    z-index: 10;
+    transition: transform 1.5s, opacity .3s, visibility .3s;
+    opacity: 0;
+    visibility: hidden;
+
+    img {
+        width: 450px;
+        height: 350px;
+        pointer-events: none;
+        user-select: none;
+    }
+}
+
+.campTransform {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-120px);
+}
+
+.campTransform2 {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-200px, -270px) scale(.8);  
 }
 
 .empty {
