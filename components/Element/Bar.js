@@ -1,9 +1,10 @@
-import React from 'react';
+import React from 'react'
 
 const Bar = () => (
-  <div className="bar"> 
-    <i className="fa fa-bars" style={{ fontSize: "20px"}}></i> 
+  <div className="bar">
+    <div className="bar-line"></div>
+    <div className="bar-line"></div>
   </div>
-);
+)
 
-export default Bar;
+export default Bar
