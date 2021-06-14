@@ -1,16 +1,9 @@
 import React from 'react'
-import Fade from 'react-reveal/Fade'
+import Title from '../Element/Title'
 
 const SectionTwo = () => (
   <div className="section-two">
-    <div className="title">
-      <Fade bottom duration={800}>
-        <p>Explore the</p>
-      </Fade>
-      <Fade bottom duration={800}>
-        <p>places you love</p>
-      </Fade>
-    </div>
+    <Title label="Explore the" label2="places you love" />
   </div>
 )
 
