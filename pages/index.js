@@ -19,7 +19,7 @@ export default function Home() {
                 }}
               >
                 <iframe
-                  src="http://localhost:3000/ui"
+                  src="/ui"
                   width="900px"
                   height="560px"
                   frameBorder="0"
