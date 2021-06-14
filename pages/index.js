@@ -1,13 +1,9 @@
 import ReactFullpage from '@fullpage/react-fullpage'
-import { useState } from 'react/cjs/react.development'
+
 export default function Home() {
   const anchors = ['home']
-  const [isShow, setIsShow] = useState(false)
   return (
     <div className="root">
-      {/* <button onClick={() => setIsShow(!isShow)} className="show-btn">
-        Show UI
-      </button> */}
       <ReactFullpage
         anchors={anchors}
         navigation={false}

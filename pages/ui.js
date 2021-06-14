@@ -11,6 +11,7 @@ export default function Home() {
   const [openIcon, setOpenIcon] = useState(true)
   const [imageTransform, setImageTransform] = useState(0)
   const [floatingText, setFloatingText] = useState(0)
+  const [floatingDrawing, setFloatingDrawing] = useState(0)
   const anchors = ['home', 'service', 'support']
 
   useEffect(() => {
@@ -23,14 +24,19 @@ export default function Home() {
       setOpenIcon(true)
       setImageTransform(0)
       setFloatingText(0)
+      setFloatingDrawing(0)
     } else if (destination.anchor === 'service') {
       setOpenIcon(false)
       setImageTransform(1)
       setFloatingText(1)
+      setFloatingDrawing(1)
     } else if (destination.anchor === 'support') {
       setOpenIcon(true)
       setImageTransform(2)
       setFloatingText(2)
+      setTimeout(() => {
+        setFloatingDrawing(2)
+      }, 500)
     }
   }
 
@@ -66,24 +72,24 @@ export default function Home() {
           including versions of Lorem Ipsum
         </p>
       </div>
-      {floatingText === 2 && (
+      {floatingDrawing === 2 && (
         <div
           className={clsx(
             'float-drawing',
-            floatingText === 2 && 'float-drawing-2'
+            floatingDrawing === 2 && 'float-drawing-2'
           )}
         >
-          <img src="https://img.freepik.com/free-vector/abstract-banner-background-with-red-shapes_1361-3348.jpg?size=626&ext=jpg&ga=GA1.2.1412099611.1623110400"></img>
+          <img src="https://pix10.agoda.net/hotelImages/908722/-1/826ae52cda2279e339bb8fb769d97dee.jpg?s=1024x768"></img>
         </div>
       )}
-      {floatingText === 2 && (
+      {floatingDrawing === 2 && (
         <div
           className={clsx(
             'float-drawing2',
-            floatingText === 2 && 'float-drawing2-2'
+            floatingDrawing === 2 && 'float-drawing2-2'
           )}
         >
-          <img src="https://img.freepik.com/free-vector/abstract-banner-background-with-red-shapes_1361-3348.jpg?size=626&ext=jpg&ga=GA1.2.1412099611.1623110400"></img>
+          <img src="https://q4launch.com/wp-content/uploads/2018/01/luxury-pool-with-view-what-is-yield-management.jpeg"></img>
         </div>
       )}
       <div

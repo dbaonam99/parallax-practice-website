@@ -31,7 +31,7 @@ const Action = ({ openIcon }) => {
         </Fade>
       </div>
       <div className="drawing">
-        <img src="https://img.freepik.com/free-vector/abstract-banner-background-with-red-shapes_1361-3348.jpg?size=626&ext=jpg&ga=GA1.2.1412099611.1623110400"></img>
+        <img src="https://cdn.carbuzz.com/gallery-images/2021-mercedes-amg-g63-dashboard-carbuzz-410020.jpg"></img>
       </div>
     </div>
   )
