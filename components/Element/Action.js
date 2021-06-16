@@ -1,10 +1,9 @@
 import React from 'react'
 import Fade from 'react-reveal/Fade'
-import { useState } from 'react/cjs/react.development'
 
-const Action = ({ openIcon }) => {
+const Action = ({ currentSection }) => {
   return (
-    <div className={openIcon ? 'action' : 'action actionOff'}>
+    <div className={currentSection === 0 ? 'action' : 'action actionOff'}>
       <div className="explore">
         <Fade bottom duration={600} delay={200}>
           <p>KEEP THE WORLD ADVENTUROUS FOREVER</p>

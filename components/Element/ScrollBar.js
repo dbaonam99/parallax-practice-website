@@ -1,12 +1,12 @@
 import React from 'react'
 import clsx from 'clsx'
 
-const ScrollBar = ({ floatingText }) => (
+const ScrollBar = ({ currentSection }) => (
   <div
     className={clsx(
       'scroll',
-      floatingText === 1 && 'scroll2',
-      floatingText === 2 && 'scroll3'
+      currentSection === 1 && 'scroll2',
+      currentSection === 2 && 'scroll3'
     )}
   >
     <div className="scroll-item"></div>

@@ -3,7 +3,7 @@ import Fade from 'react-reveal/Fade'
 import Action from '../Element/Action'
 import Title from '../Element/Title'
 
-const SectionOne = ({ openIcon }) => {
+const SectionOne = ({ currentSection }) => {
   const [height, setHeight] = useState(0)
   useEffect(() => {
     setHeight(window.innerHeight)
@@ -12,7 +12,7 @@ const SectionOne = ({ openIcon }) => {
   return (
     <div className="section-one" style={{ height: `${height}px` }}>
       <Title label="Electric" label2="Adventure" />
-      <Action openIcon={openIcon} />
+      <Action currentSection={currentSection} />
     </div>
   )
 }

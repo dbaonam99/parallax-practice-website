@@ -2,7 +2,7 @@ import Menu from '../components/Element/Menu'
 import Bar from '../components/Element/Bar'
 import SectionOne from '../components/Section/SectionOne'
 import SectionTwo from '../components/Section/SectionTwo'
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import SectionThree from '../components/Section/SectionThree'
 import FloatingImage from '../components/Element/FloatingImage'
 import FloatingText from '../components/Element/FloatingText'
@@ -11,47 +11,63 @@ import MainImage from '../components/Element/MainImage'
 
 export default function Home() {
   const mainRef = useRef(null)
-  const [openIcon, setOpenIcon] = useState(true)
-  const [imageTransform, setImageTransform] = useState(0)
-  const [floatingText, setFloatingText] = useState(0)
+  const [currentSection, setCurrentSection] = useState(0)
   const [floatingDrawing, setFloatingDrawing] = useState(0)
-  const [transformCss, setTransformCss] = useState('')
-
-  const onLeave = (origin, destination, direction) => {
-    if (destination.anchor === 'home') {
-      setOpenIcon(true)
-      setImageTransform(0)
-      setFloatingText(0)
-      setFloatingDrawing(0)
-    } else if (destination.anchor === 'service') {
-      setOpenIcon(false)
-      setImageTransform(1)
-      setFloatingText(1)
-      setFloatingDrawing(1)
-    } else if (destination.anchor === 'support') {
-      setOpenIcon(true)
-      setImageTransform(2)
-      setFloatingText(2)
-      setTimeout(() => {
-        setFloatingDrawing(2)
-      }, 500)
-    }
-  }
+  const [allowToWheel, setAllowToWheel] = useState(true)
 
   const handleOnWheel = (event) => {
     if (event.deltaY > 0) {
-      // anime({
-      //   targets: mainRef.current,
-      //   translateY: '-100vh',
-      //   delay: 1,
-      //   loop: true,
-      //   direction: 'alternate',
-      //   easing: 'easeInOutSine',
-      // })
-
-      setTransformCss('translateY(-100vh)')
+      if (allowToWheel) {
+        if (currentSection === 0) {
+          setCurrentSection(1)
+          setAllowToWheel(false)
+          setTimeout(() => {
+            setAllowToWheel(true)
+          }, 1500)
+          setFloatingDrawing(1)
+        }
+      }
+      if (allowToWheel) {
+        if (currentSection === 1) {
+          setCurrentSection(2)
+          setAllowToWheel(false)
+          setTimeout(() => {
+            setAllowToWheel(true)
+          }, 1500)
+          setTimeout(() => {
+            setFloatingDrawing(2)
+          }, 200)
+        }
+      }
+      if (allowToWheel) {
+        if (currentSection === 2) {
+          setAllowToWheel(false)
+          setTimeout(() => {
+            setAllowToWheel(true)
+          }, 1500)
+        }
+      }
     } else {
-      setTransformCss('translateY(0vh)')
+      if (allowToWheel) {
+        if (currentSection === 1) {
+          setCurrentSection(0)
+          setAllowToWheel(false)
+          setFloatingDrawing(0)
+          setTimeout(() => {
+            setAllowToWheel(true)
+          }, 1500)
+        }
+      }
+      if (allowToWheel) {
+        if (currentSection === 2) {
+          setCurrentSection(1)
+          setAllowToWheel(false)
+          setFloatingDrawing(1)
+          setTimeout(() => {
+            setAllowToWheel(true)
+          }, 1500)
+        }
+      }
     }
   }
 
@@ -59,20 +75,20 @@ export default function Home() {
     <div className="container-box" onWheel={handleOnWheel}>
       <Menu />
       <Bar />
-      <ScrollBar floatingText={floatingText} />
-      <FloatingText floatingText={floatingText} />
+      <ScrollBar currentSection={currentSection} />
+      <FloatingText currentSection={currentSection} />
       <FloatingImage floatingDrawing={floatingDrawing} />
-      <MainImage imageTransform={imageTransform} />
+      <MainImage currentSection={currentSection} />
       <div
         style={{
-          transform: transformCss,
-          transition: '1s',
+          transform: `translateY(-${100 * currentSection}vh)`,
+          transition: '1.5s',
         }}
         ref={mainRef}
       >
-        <SectionOne openIcon={openIcon} />
+        <SectionOne currentSection={currentSection} />
         <SectionTwo />
-        <SectionThree openIcon={openIcon} />
+        <SectionThree />
       </div>
     </div>
   )

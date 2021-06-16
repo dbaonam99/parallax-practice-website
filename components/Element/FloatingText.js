@@ -1,12 +1,12 @@
 import React from 'react'
 import clsx from 'clsx'
 
-const FloatingText = ({ floatingText }) => (
+const FloatingText = ({ currentSection }) => (
   <div
     className={clsx(
       'float-text',
-      floatingText === 1 && 'float-text2',
-      floatingText === 2 && 'float-text3'
+      currentSection === 1 && 'float-text2',
+      currentSection === 2 && 'float-text3'
     )}
   >
     <p>
