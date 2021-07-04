@@ -1,4 +1,5 @@
 import React from 'react'
+import CarModel from './CarModel'
 import clsx from 'clsx'
 
 const MainImage = ({ currentSection }) => (
@@ -10,7 +11,13 @@ const MainImage = ({ currentSection }) => (
         currentSection === 2 && 'carTransform2'
       )}
     >
-      <img src="https://i.ibb.co/L6n8NyF/23a106bcde9f07bac8d868e8e4eba5c6.png"></img>
+      {currentSection === 0 ? (
+        <div className="model">
+          <CarModel />
+        </div>
+      ) : (
+        <img src="https://i.ibb.co/L6n8NyF/23a106bcde9f07bac8d868e8e4eba5c6.png"></img>
+      )}
     </div>
     <div
       className={clsx(
