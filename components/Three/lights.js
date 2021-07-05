@@ -1,7 +1,7 @@
 // Component: Lights
 // Def: Lights for our canvas
 
-import React from "react";
+import React from 'react'
 
 const Lights = () => {
   return (
@@ -10,7 +10,7 @@ const Lights = () => {
       <directionalLight
         castShadow
         position={[-8, 16, -8]}
-        intensity={0}
+        intensity={1.3}
         shadow-mapSize-width={1024}
         shadow-mapSize-height={1024}
         shadow-camera-far={50}
@@ -19,9 +19,12 @@ const Lights = () => {
         shadow-camera-top={10}
         shadow-camera-bottom={-10}
       />
-      <pointLight position={[0, 50, 0]} intensity={2} />
+      <pointLight position={[0, 300, 500]} />
+      <pointLight position={[500, 100, 0]} />
+      <pointLight position={[0, 100, -500]} />
+      <pointLight position={[500, 100, 0]} />
     </>
-  );
-};
+  )
+}
 
-export default Lights;
+export default Lights

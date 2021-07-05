@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React, { Suspense, useState, useEffect } from 'react'
 //Three
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
@@ -7,18 +7,21 @@ import Floor from '../Three/floor'
 //Model
 import Model from '../Three/Scene'
 
-function CarModel() {
+function CarModel({ currentSection }) {
   return (
     <div style={{ zIndex: 999999, height: '100%' }}>
       <Canvas
         colorManagement
         shadowMap
-        camera={{ position: [80, 10, -50], fov: 40 }}
+        camera={{
+          position: [-800, 100, 0],
+          fov: 40,
+        }}
       >
-        <OrbitControls />
+        {/* <OrbitControls /> */}
         <Lights />
         <Suspense fallback={null}>
-          <Model />
+          <Model currentSection={currentSection} />
           <Floor />
         </Suspense>
       </Canvas>
