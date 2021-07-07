@@ -550,11 +550,9 @@ a {
   opacity: 0;
   visibility: hidden;
 
-  img {
+  .model {
     width: 300px;
-    height: 220px;
-    pointer-events: none;
-    user-select: none;
+    height: 300px;
   }
 }
 

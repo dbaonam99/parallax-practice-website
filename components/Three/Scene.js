@@ -9,6 +9,7 @@ title: Lamborghini Huracan Performante
 import React, { useEffect, useRef, useState } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
 import { useFrame } from 'react-three-fiber'
+import { useSpring, a } from '@react-spring/three'
 
 export default function Model({ currentSection }) {
   const modelRef = useRef()
@@ -16,7 +17,7 @@ export default function Model({ currentSection }) {
   const modelRef3 = useRef()
   const modelRef4 = useRef()
   const group = useRef()
-  const { nodes, materials, animations } = useGLTF('/scene.gltf')
+  const { nodes, materials, animations } = useGLTF('/car.gltf')
   const { actions } = useAnimations(animations, group)
   const [scale, setScale] = useState([])
   const [isRotation, setIsRotation] = useState(false)
@@ -37,18 +38,26 @@ export default function Model({ currentSection }) {
     } else if (currentSection === 1) {
       setScale([1.3, 1.3, 1.3])
       setIsRotation(false)
-      group.current.rotation.y = 0
-      group.current.rotation.z = 0
+      // group.current.rotation.y = 0
+      // group.current.rotation.z = 0
     } else {
-      group.current.rotation.y = -0.5
-      group.current.rotation.z = 0.1
+      // group.current.rotation.y = -0.5
+      // group.current.rotation.z = 0.1
     }
   }, [currentSection])
 
-  console.log(currentSection)
+  const animation = useSpring({
+    rotation: currentSection === 2 ? [0, -0.5, 0.3] : [0, -0.5, 0.1],
+    scale: currentSection === 0 ? [2, 2, 2] : [1.3, 1.3, 1.3],
+  })
 
   return (
-    <group ref={group} dispose={null} scale={scale}>
+    <a.group
+      ref={group}
+      dispose={null}
+      scale={animation.scale}
+      rotation={animation.rotation}
+    >
       <group rotation={[-Math.PI / 2, 0, 0]}>
         <group rotation={[Math.PI / 2, 0, 0]}>
           <group
@@ -1544,8 +1553,8 @@ export default function Model({ currentSection }) {
           </group>
         </group>
       </group>
-    </group>
+    </a.group>
   )
 }
 
-useGLTF.preload('/scene.gltf')
+useGLTF.preload('/car.gltf')

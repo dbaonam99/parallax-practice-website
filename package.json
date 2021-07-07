@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@react-spring/three": "^9.2.3",
     "@react-three/cannon": "^2.5.0",
     "@react-three/drei": "^7.0.6",
     "@svgr/webpack": "^5.5.0",

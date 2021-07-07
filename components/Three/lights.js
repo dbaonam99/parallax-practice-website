@@ -6,7 +6,7 @@ import React from 'react'
 const Lights = () => {
   return (
     <>
-      <ambientLight intensity={0.4} />
+      <ambientLight intensity={1} />
       <directionalLight
         castShadow
         position={[-8, 16, -8]}
