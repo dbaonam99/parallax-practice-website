@@ -1,19 +1,27 @@
+import { useState, useRef, useEffect } from 'react'
 import Menu from '../components/Element/Menu'
 import Bar from '../components/Element/Bar'
 import SectionOne from '../components/Section/SectionOne'
 import SectionTwo from '../components/Section/SectionTwo'
-import { useState, useRef, useEffect } from 'react'
 import SectionThree from '../components/Section/SectionThree'
 import FloatingImage from '../components/Element/FloatingImage'
 import FloatingText from '../components/Element/FloatingText'
 import ScrollBar from '../components/Element/ScrollBar'
 import MainImage from '../components/Element/MainImage'
+import Loading from '../components/Element/Loading'
 
 export default function Home() {
   const mainRef = useRef(null)
   const [currentSection, setCurrentSection] = useState(0)
   const [floatingDrawing, setFloatingDrawing] = useState(0)
   const [allowToWheel, setAllowToWheel] = useState(true)
+  const [showLoading, setShowLoading] = useState(true)
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShowLoading(false)
+    }, 4000)
+  }, [])
 
   const handleOnWheel = (event) => {
     if (event.deltaY > 0) {
@@ -74,6 +82,7 @@ export default function Home() {
   return (
     <div className="container-box" onWheel={handleOnWheel}>
       <Menu />
+      <Loading showLoading={showLoading} />
       <Bar />
       <ScrollBar currentSection={currentSection} />
       <FloatingText currentSection={currentSection} />

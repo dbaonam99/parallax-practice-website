@@ -5,8 +5,8 @@ import HouseModel from '../components/Element/HouseModel'
 const App = () => {
   return (
     <div style={{ height: '100vh' }}>
-      {/* <CarModel /> */}
-      <HouseModel />
+      <CarModel />
+      {/* <HouseModel /> */}
     </div>
   )
 }
