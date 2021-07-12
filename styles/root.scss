@@ -569,6 +569,59 @@ a {
   }
 }
 
+.road {
+  width: 200px;
+  height: 300px;
+  // background: red;
+  position: absolute;
+  top: -20px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transform: rotate(100deg);
+  z-index: -1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  overflow: hidden;
+
+  .line {
+    width: 20px;
+    height: 50%;
+    background: #ddd;
+    margin-right: 60px;
+    opacity: 0.4;
+    animation: line1 .5s infinite;
+  }
+  @keyframes line1 {
+    from {
+      transform: translateY(-500px)
+    }
+    to {
+      transform: translateY(200px)
+    }
+  }
+  .line2 {
+    width: 20px;
+    height: 50%;
+    background: #ddd;
+    margin-right: 110px;
+    opacity: 0.4;
+    animation: line2 .8s infinite;
+    animation-delay: .2s;
+  }
+  @keyframes line2 {
+    from {
+      transform: translateY(-500px)
+    }
+    to {
+      transform: translateY(100px)
+    }
+  }
+}
+
+
 .carTransform2 {
   transform: translate(-120px, -170px) scale(0.8);
 }

@@ -6,7 +6,7 @@ import { OrbitControls, Plane, Stage, Center } from '@react-three/drei'
 
 function CarModel({ currentSection }) {
   return (
-    <div style={{ zIndex: 999999, height: '100%' }}>
+    <div style={{ zIndex: 999999, height: '100%', position: 'relative' }}>
       <Canvas
         colorManagement
         shadowMap
@@ -41,6 +41,11 @@ function CarModel({ currentSection }) {
           )} */}
         </Suspense>
       </Canvas>
+      {currentSection === 0 && 
+      <div className="road">
+        <div className="line"></div>
+        {/* <div className="line2"></div> */}
+      </div>}
     </div>
   )
 }
