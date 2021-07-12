@@ -20,6 +20,7 @@ export default function Model({ currentSection }) {
   const { nodes, materials, animations } = useGLTF('/car.gltf')
   const { actions } = useAnimations(animations, group)
   const [isRotation, setIsRotation] = useState(false)
+  const [isRunOnFirstTime, setIsRunOnFirstTime] = useState(true)
 
   useFrame(() => {
     if (isRotation) {
@@ -33,13 +34,21 @@ export default function Model({ currentSection }) {
   useEffect(() => {
     if (currentSection === 0) {
       setIsRotation(true)
+      setIsRunOnFirstTime(true)
+      setTimeout(() => {
+        setIsRunOnFirstTime(false)
+      }, 3000)
     } else if (currentSection === 1) {
       setIsRotation(false)
     }
   }, [currentSection])
 
   const animation = useSpring({
-    rotation: currentSection === 2 ? [0, -0.5, 0.3] : [0, -0.5, 0.1],
+    rotation: isRunOnFirstTime
+      ? [0, -0.9, 0]
+      : currentSection === 2
+      ? [0, -0.4, 0.1]
+      : [0, -0.3, 0],
     scale: currentSection === 0 ? [1.6, 1.6, 1.6] : [1.3, 1.3, 1.3],
   })
 
@@ -49,6 +58,8 @@ export default function Model({ currentSection }) {
       dispose={null}
       scale={animation.scale}
       rotation={animation.rotation}
+      castShadow
+      receiveShadow
     >
       <group rotation={[-Math.PI / 2, 0, 0]}>
         <group rotation={[Math.PI / 2, 0, 0]}>

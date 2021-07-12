@@ -1,7 +1,5 @@
 import React, { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
-import Lights from '../Three/lights'
-import Floor from '../Three/floor'
 import House from '../Three/House'
 import { OrbitControls } from '@react-three/drei'
 
@@ -16,11 +14,11 @@ function HouseModel() {
           fov: 40,
         }}
       >
-        <Lights />
+        <ambientLight intensity={1} />
+        <directionalLight castShadow position={[-8, 16, -8]} intensity={1.3} />
         <Suspense fallback={null}>
           {/* <OrbitControls /> */}
           <House />
-          <Floor />
         </Suspense>
       </Canvas>
     </div>

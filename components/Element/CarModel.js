@@ -1,9 +1,8 @@
 import React, { Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
 import Lights from '../Three/lights'
-import Floor from '../Three/floor'
 import Model from '../Three/Scene'
-import { OrbitControls } from '@react-three/drei'
+import { OrbitControls, Plane, Stage, Center } from '@react-three/drei'
 
 function CarModel({ currentSection }) {
   return (
@@ -16,11 +15,30 @@ function CarModel({ currentSection }) {
           fov: 40,
         }}
       >
-        <Lights />
         <Suspense fallback={null}>
           {/* <OrbitControls /> */}
-          <Model currentSection={currentSection} />
-          <Floor />
+          <Stage
+            contactShadowOpacity={0.5}
+            shadowBias={-0.0015}
+            shadows={true}
+            environment={'warehouse'}
+            contactShadow={true}
+            intensity={1}
+            contactShadowBlur={2}
+            adjustCamera={false}
+          >
+            <Model currentSection={currentSection} />
+          </Stage>
+          {/* {currentSection === 0 && (
+            <Plane
+              receiveShadow
+              rotation={[-Math.PI / 2, 0, 0]}
+              position={[0, -1, 0]}
+              args={[1000, 1000]}
+            >
+              <meshStandardMaterial attach="material" color="red" />
+            </Plane>
+          )} */}
         </Suspense>
       </Canvas>
     </div>

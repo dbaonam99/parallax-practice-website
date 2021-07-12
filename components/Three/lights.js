@@ -22,7 +22,7 @@ const Lights = () => {
       <pointLight position={[0, 300, 500]} />
       <pointLight position={[500, 100, 0]} />
       <pointLight position={[0, 100, -500]} />
-      <pointLight position={[500, 100, 0]} />
+      <pointLight position={[-500, 100, 0]} />
     </>
   )
 }
